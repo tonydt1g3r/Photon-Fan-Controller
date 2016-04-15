@@ -6,9 +6,9 @@ int fan3(String command);
 // We name pins 
 int pin1 = D0; 
 int pin2 = D1;
-int light = D2;
-int foff = D3;
-int flow = D4;
+int pin3 = D2;
+int flight = D3;
+int foff = D4;
 int fmed = D5;
 int fhigh = D6;
 
@@ -24,17 +24,17 @@ void setup()
   // Initialize output pins
   pinMode(pin1, OUTPUT);
   pinMode(pin2, OUTPUT);
-  pinMode(light, OUTPUT);
+  //pinMode(pin3, OUTPUT);
+  pinMode(flight, OUTPUT);
   pinMode(foff, OUTPUT);
-  pinMode(flow, OUTPUT);
   pinMode(fmed, OUTPUT);
   pinMode(fhigh, OUTPUT);
 
   digitalWrite(pin1, LOW);
   digitalWrite(pin2, LOW);
-  digitalWrite(light, LOW);
+  //digitalWrite(pin3, LOW);
+  digitalWrite(flight, LOW);
   digitalWrite(foff, LOW);
-  digitalWrite(flow, LOW);
   digitalWrite(fmed, LOW);
   digitalWrite(fhigh, LOW);
 
@@ -60,16 +60,16 @@ int fan1(String command)
 {
   if (command == "0") 
     {   
-    digitalWrite(foff, HIGH);   // Turn ON the relay
+    digitalWrite(flight, HIGH);   // Turn ON the relay
     delay(500);
-    digitalWrite(foff, LOW);
+    digitalWrite(flight, LOW);
     Particle.publish("Command 0");
     } 
   else if (command == "1")
     {               
-    digitalWrite(flow, HIGH);   // Turn ON the relay
+    digitalWrite(foff, HIGH);   // Turn ON the relay
     delay(500);
-    digitalWrite(flow, LOW);    // Turn OFF the relay
+    digitalWrite(foff, LOW);    // Turn OFF the relay
     Particle.publish("Command 1");
     }
   else if (command == "2")
@@ -86,13 +86,13 @@ int fan1(String command)
     digitalWrite(fhigh, LOW);    // Turn OFF the relay
     Particle.publish("Command 3");
     }
-  else if (command == "4")
-    {               
-    digitalWrite(light, HIGH);   // Turn ON the relay
-    delay(500);
-    digitalWrite(light, LOW);
-    Particle.publish("Command 4");
-    }
+  //else if (command == "4")
+    //{               
+    //digitalWrite(light, HIGH);   // Turn ON the relay
+    //delay(500);
+    //digitalWrite(light, LOW);
+    //Particle.publish("Command 4");
+    //}
 }
 
 int fan2(String command)
@@ -101,16 +101,16 @@ int fan2(String command)
   delay(500);
   if (command == "0") 
     {   
-    digitalWrite(foff, HIGH);   // Turn ON the relay
+    digitalWrite(flight, HIGH);   // Turn ON the relay
     delay(500);
-    digitalWrite(foff, LOW);
+    digitalWrite(flight, LOW);
     digitalWrite(pin1, LOW);
     } 
   else if (command == "1")
     {               
-    digitalWrite(flow, HIGH);   // Turn ON the relay
+    digitalWrite(foff, HIGH);   // Turn ON the relay
     delay(500);
-    digitalWrite(flow, LOW);    // Turn OFF the relay
+    digitalWrite(foff, LOW);    // Turn OFF the relay
     digitalWrite(pin1, LOW);
     }
   else if (command == "2")
@@ -126,13 +126,6 @@ int fan2(String command)
     delay(500);
     digitalWrite(fhigh, LOW);    // Turn OFF the relay
     digitalWrite(pin1, LOW);
-    }
-  else if (command == "4")
-    {               
-    digitalWrite(light, HIGH);   // Turn ON the relay
-    delay(500);
-    digitalWrite(light, LOW);
-    Particle.publish("Command 4");
     }
 }
 
@@ -142,16 +135,16 @@ int fan3(String command)
   delay(500);
   if (command == "0") 
     {   
-    digitalWrite(foff, HIGH);   // Turn ON the relay
+    digitalWrite(flight, HIGH);   // Turn ON the relay
     delay(500);
-    digitalWrite(foff, LOW);
+    digitalWrite(flight, LOW);
     digitalWrite(pin2, LOW);
     } 
   else if (command == "1")
     {               
-    digitalWrite(flow, HIGH);   // Turn ON the relay
+    digitalWrite(foff, HIGH);   // Turn ON the relay
     delay(500);
-    digitalWrite(flow, LOW);    // Turn OFF the relay
+    digitalWrite(foff, LOW);    // Turn OFF the relay
     digitalWrite(pin2, LOW);
     }
   else if (command == "2")
@@ -167,12 +160,5 @@ int fan3(String command)
     delay(500);
     digitalWrite(fhigh, LOW);    // Turn OFF the relay
     digitalWrite(pin2, LOW);
-    }
-  else if (command == "4")
-    {               
-    digitalWrite(light, HIGH);   // Turn ON the relay
-    delay(500);
-    digitalWrite(light, LOW);
-    Particle.publish("Command 4");
     }
 }
