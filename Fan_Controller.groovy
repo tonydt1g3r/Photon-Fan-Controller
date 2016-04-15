@@ -100,12 +100,12 @@ def off()
 	sendEvent(name: "switch", value: "off", isStateChange: true, display: false)
     log.info "Fan off"
   	sendEvent(name: "currentSpeed", value: "OFF" as String)
-	put '0'
+	put '1'
 }
 
 def lowSpeed() 
 {
-	put '1'
+	put '2'
     sendEvent(name: "switch", value: "on", isStateChange: true, display: false)
 	log.info "Fan low"
     sendEvent(name: "currentSpeed", value: "LOW" as String)
@@ -129,7 +129,7 @@ def highSpeed()
 
 def light()
 {
-	put '4'
+	put '0'
     sendEvent(name: "switch", value: "on", isStateChange: true, display: false)
     log.info "Fan Light"
 }
